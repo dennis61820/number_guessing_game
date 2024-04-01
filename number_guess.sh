@@ -2,8 +2,12 @@
 
 
 # generate a number between 1 and 1000
+NUMBER=$(($RANDOM % 1000 + 1))
+echo $NUMBER
 
 # prompt for user name
+read USER_NAME
+echo $USER_NAME
 
 # if first time welcome and mention first time
 
