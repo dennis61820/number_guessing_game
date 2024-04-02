@@ -12,28 +12,31 @@ read USER_NAME
 
 
 GUESS_NUM () {
-  #echo -e "\nEnter your username:"
+  
   
   read GUESS 
+  if [[ ! $GUESS =~ ^[0-9]+$ ]]
+  then
+    echo -e "\nThat is not an integer, guess again:"
+    GUESS_NUM 
+  fi
 
   # 1 number correct
     if [[ $GUESS == $NUMBER ]]
     then
-    echo -e "\nYou guessed it in <number_of_guesses> tries. The secret number was $NUMBER. Nice job!" 
+      echo -e "\nYou guessed it in <number_of_guesses> tries. The secret number was $NUMBER. Nice job!" 
   # 2 number low
     elif [[ $GUESS > $NUMBER ]]
     then
-   echo -e "\nIt's lower than that, guess again:"
-   GUESS_NUM
+      echo -e "\nIt's lower than that, guess again:"
+      GUESS_NUM
   # 3 number high 
     elif [[ $GUESS < $NUMBER ]]
     then
-    echo -e "\nIt's higher than that, guess again:"
-    GUESS_NUM
-  # 4 else
-    else
-    echo -e "\nThat is not an integer, guess again:"
-  GUESS_NUM 
+      echo -e "\nIt's higher than that, guess again:"
+      GUESS_NUM
+ 
+      
   fi
   
 }
